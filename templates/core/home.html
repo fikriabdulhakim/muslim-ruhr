@@ -1,0 +1,29 @@
+{% extends 'core/base.html' %}
+{% block content %}
+<section class="hero text-white text-center d-flex align-items-center">
+  <div class="container">
+    <h1 class="display-4 fw-bold">Connecting People to Jesus Christ</h1>
+    <p class="lead">A Django-based clone inspired by Cru.org.</p>
+    <a href="/about/" class="btn btn-primary btn-lg">Learn More</a>
+  </div>
+</section>
+
+<section class="container py-5">
+  <h2 class="mb-4">Latest Articles</h2>
+  <div class="row">
+    {% for article in articles %}
+    <div class="col-md-4 mb-4">
+      <div class="card h-100">
+        <div class="card-body">
+          <h5>{{ article.title }}</h5>
+          <p>{{ article.excerpt|truncatewords:20 }}</p>
+          <a href="/articles/{{ article.slug }}/" class="btn btn-outline-primary">Read More</a>
+        </div>
+      </div>
+    </div>
+    {% empty %}
+    <p>No articles yet.</p>
+    {% endfor %}
+  </div>
+</section>
+{% endblock %}
